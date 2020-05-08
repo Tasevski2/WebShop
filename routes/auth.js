@@ -48,7 +48,7 @@ router.post('/login', [
 // @route GET auth/google
 // @desc  Login with google
 // @access  Public
-router.post('/google', 
+router.get('/google', 
     passport.authenticate('google', { scope: ['profile'], session: false}));
 
 router.get('/google/callback', 
