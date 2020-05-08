@@ -1,11 +1,15 @@
-const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const config = require('config');
 
-module.exports = () => {
+module.exports = (passport) => {
     passport.use(new GoogleStrategy({
-
-    }), (accessToken, refreshToken, profile, done) => {
+        clientID: config.get('google_client_id'),
+        clientSecret: config.get('google_client_secret'),
+        // callbackURL: '/auth/google/callback',
+        // proxy: true
+    }, (accessToken, refreshToken, profile, done) => {
+        console.log(accessToken);
+        console.log(accessToken);
         
-    })
+    }));
 }

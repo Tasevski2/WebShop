@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const User = require('../models/User');
 
-
+require('../config/passport/passport-google')(passport);
 // @route POST api/users/login
 // @desc  Login user
 // @access  Public
@@ -48,10 +48,12 @@ router.post('/login', [
 // @route GET auth/google
 // @desc  Login with google
 // @access  Public
-router.get('/google', 
-    passport.authenticate('google', { scope: ['profile'], session: false}), (req, res) => {
-        
-    });
+router.post('/google', 
+    passport.authenticate('google', { scope: ['profile'], session: false}));
 
+router.get('/google/callback', 
+    passport.authenticate('google', { session: false}), (req, res) => {
+        console.log(req);
+    })
 
 module.exports = router;
