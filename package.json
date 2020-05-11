@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Viktor",
   "license": "ISC",
@@ -20,6 +22,7 @@
     "mongoose": "^5.9.7",
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "redux-devtools-extension": "^2.13.8",
     "request": "^2.88.2"

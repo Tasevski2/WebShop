@@ -14,23 +14,30 @@ const ProductModel = new Schema({
         type: String,
         required: true
     },
+    photos: [
+        {
+            type: {
+                type: String
+            },
+            data: {
+                type: Buffer
+            },
+            src: {
+                type: String
+            }
+        }
+    ],
     material: [
         {
             type: String
         }
     ],
-    season: [
-        {
-            type: String
-        }
-    ],
-    sleevs: {
-        type: String,
-        required: true
+    season: {
+        type: String
     },
     onAction: {
         type: Boolean,
-        required
+        required: true
     },
     available: {
         type: Boolean,
@@ -46,10 +53,6 @@ const ProductModel = new Schema({
         required: true
     },
     productPattern: {
-        type: String,
-        required: true
-    },
-    brand: {
         type: String,
         required: true
     },

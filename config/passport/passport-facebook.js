@@ -1,34 +1,33 @@
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FaceBookStrategy = require('passport-facebook').Strategy;
 const config = require('config');
 
 const User = require('../../models/User');
 
 module.exports = (passport) => {
-    passport.use(new GoogleStrategy({
-        clientID: config.get('google_client_id'),
-        clientSecret: config.get('google_client_secret'),
-        callbackURL: '/auth/google',
-        proxy: true
-    }, async (accessToken, refreshToken, profile, done) => {
+    passport.use(new FaceBookStrategy({
+        clientID: config.get('facebook_app_id'),
+        clientSecret: config.get('facebook_app_secret'),
+        callbackURL: "http://localhost:5000/auth/facebook",
+        profileFields: ['id', 'first_name', 'last_name', 'picture', 'email']
+    }, async(accessToken, refreshToken, profile, done) => {
+        const email = profile.emails[0].value;
+
         try {
-            const email = profile.emails[0].value;
             let user = await User.findOne({ email });
-            console.log(user);
-            if (user) {
-                if(user.google.id) return done(null, user); 
-                user.google = {
+            if(user) {
+                if(user.facebook.id) return done(null, user);
+                user.facebook = {
                     id: profile.id,
                     photo: profile.photos[0].value
                 }
                 await user.save();
                 return done(null, user);
             }
-
             user = {
                 firstName: profile.name.givenName,
                 lastName: profile.name.familyName,
                 email: email,
-                google: {
+                facebook: {
                     id: profile.id,
                     photo: profile.photos[0].value
                 }
@@ -36,7 +35,7 @@ module.exports = (passport) => {
             user = await new User(user).save();
             return done(null, user);
         } catch (err) {
-            return done(err, null);
+           return done(err, null); 
         }
-    }));
+    }))
 }

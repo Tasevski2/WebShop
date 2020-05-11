@@ -4,22 +4,19 @@ const Schema = mongoose.Schema;
 const UserModel = new Schema({
     firstName: {
         type: String,
-        required: true
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     email: {
         type: String,
         required: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
     },
-    deliveryData: {
-        phone_number: {
+    deliveryInfo: {
+        phoneNumber: {
             type: String
         },
         city: {
@@ -28,7 +25,10 @@ const UserModel = new Schema({
         settlement: {
             type: String
         },
-        street_and_num: {
+        streetAndNum: {
+            type: String
+        },
+        postalCode: {
             type: String
         }
     },
@@ -36,10 +36,54 @@ const UserModel = new Schema({
         {
             product: {
                 type: Schema.Types.ObjectId,
-                ref: 'product'
+                ref: 'test'
+            },
+            size: {
+                type: String,
+                required: true,
+            },
+            quantaty: {
+                type: Number,
+                required: true
+            },
+            date: {
+                type: Date,
+                default: Date.now()
             }
         }
     ],
+    orders: [
+        {
+            orderId: {
+                type: Schema.Types.ObjectId,
+                ref: 'order'
+            },
+            date: {
+                type: Date,
+                default: Date.now()
+            }
+        }
+    ],
+    google: {
+        id:{
+            type: String
+        },
+        photo: {
+            type: String
+        }
+    },
+    date: {
+        type: Date,
+        default: Date.now()
+    },
+    facebook: {
+        id:{
+            type: String
+        },
+        photo: {
+            type: String
+        }
+    },
     date: {
         type: Date,
         default: Date.now()
