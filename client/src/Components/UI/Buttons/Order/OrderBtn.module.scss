@@ -1,0 +1,19 @@
+@import '../../../../App.scss';
+.OrderBtn {
+    width: 100%;
+    padding: 12px 120px;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    background-color: rgb(194, 24, 7);
+    opacity: 0.9;
+    @media (min-width: $smallScreenMin) {
+        opacity: 0.8;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

@@ -34,26 +34,9 @@ app.use(express.json({ extended: false}));
     
 // });
 
-// app.get('/:product_id', async (req, res) => {
-//     // res.send("Server test route");
-//     try {
-        
-//         let html = ``;
-//         const product = await Test.findOne({ _id: req.params.product_id});
-//         product.photos.map(photo => {
-//             html += `<img src="${photo.src}"/>`;
-//         });
-//         // await product.save();
-//         return res.send(`<body>${html}</body>`);
-//     } catch (error) {
-//         return res.json(error);
-//     }
-    
-// });
-
 app.get('/', (req, res) => {
     res.send('Server route');
-})
+});
 
 app.use('/users', require('./routes/users'));
 app.use('/auth', require('./routes/auth'));

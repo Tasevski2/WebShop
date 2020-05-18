@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const request = require('request');
 const Product = require('../models/Product');
 const Test = require('../models/Test');
 const { route } = require('./auth');
@@ -129,12 +129,26 @@ router.get('/', async (req, res) => {
         return res.status(500).json(error.message);
     }
 
+    // request('https://jsonplaceholder.typicode.com/photos', async (err, response, body) => {
+    //     if (err) return res.send('Request err: ' + err);
+    //     const result = JSON.parse(body);
+    //     console.log(result.length);
+    //     let tests = await Test.find();
+    //     for (let i = 0; i < 500; i++) {
+    //         for (let j = 1; j < 3; j++) {
+    //             tests[i].photos.push({
+    //                 src: result[i+j].url
+    //             });
+    //         }
+    //         await tests[i].save();
+    //     }
+    //     return res.send('Done');
+    // });
 
     // ADD NEKOE POLE
-
     // let tests = await Test.find();
-    // for(let i =0 ;i < 500; i++) {
-    //     tests[i].productPattern = product_pattern[i%5];
+    // for (let i = 0; i < 500; i++) {
+    //     tests[i].photos = [];
     //     await tests[i].save();
     // }
     // return res.json("DONE");

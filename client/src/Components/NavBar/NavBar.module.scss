@@ -1,0 +1,58 @@
+@import "../../App.scss";
+
+.NavBar {
+    width: 100%;
+    height: 6vh;
+    background-color: red;
+    padding: 0.5vh 1vh;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.Bars {
+    width: 10vh;
+    box-sizing: border-box;
+}
+
+.Logo {
+    width: 5vh;
+    height: 100%;
+    background-color: green($color: #000000);
+}
+
+.SignInCart {
+    height: 100%;
+    width: 10vh;
+    padding: 1vh;
+    box-sizing: border-box;
+    // background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (min-width: $smallScreenMin) {
+        width: 15vh;
+    }
+}
+
+.SignIn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @media (min-width: $smallScreenMin) {
+        padding-right: 12px;
+        border-right: 1px solid black;
+    }
+}
+
+.SignInText {
+    margin-right: 5px;
+    font-size: 20px;
+    @media (max-width: $smallScreenMin) {
+        display: none;
+    }
+}

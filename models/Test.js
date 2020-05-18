@@ -48,12 +48,6 @@ const TestModel = new Schema({
     },
     photos: [
         {
-            type: {
-                type: String
-            },
-            data: {
-                type: Buffer
-            },
             src: {
                 type: String
             }

@@ -1,0 +1,82 @@
+@import '../../../App.scss';
+.LeftSidebar {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: rgba(43, 45, 49, 0.97);
+    padding: 20px 10px;
+    box-sizing: border-box;
+    transition: transform 0.3 ease-out;
+}
+
+
+
+.Open {
+    @extend .LeftSidebar;
+    // transition: transform 0.3 ease-out;
+    transform: translateX(0%);
+}
+
+.Close {
+    @extend .LeftSidebar;
+    // transition: transform 0.3 ease-out;
+    transform: translateX(-100%);
+}
+
+.Header {
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(233, 39, 39);
+    // background-color: green;
+    padding: 0 15px 30px 5px;
+    border-bottom: thin solid rgba(233, 39, 39, 0.5);
+}
+
+.Main {
+    // background-color: green;
+    height: fit-content;
+    display: flex;
+    flex-flow: row;
+    padding-top: 25px;
+    ul {
+        list-style: none;
+        padding-left: 10px;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+        li {
+            height: 50px;
+            margin-bottom: 25px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            // background-color: red;
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+
+.Footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background-color: rgb(241, 16, 16);
+    div {
+        height: 70%;
+        width: 50%;
+
+    }
+}
